@@ -1,0 +1,44 @@
+.mo-loading-slip-dot {
+  -webkit-animation: slip-dot 2.0s infinite linear;
+  animation: slip-dot 2.0s infinite linear;
+  i {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 0;
+    border-radius: 100%;
+    -webkit-animation: slip-dot-i 2.0s infinite ease-in-out;
+    animation: slip-dot-i 2.0s infinite ease-in-out;
+    &:nth-child(2) {
+      top: auto;
+      bottom: 0px;
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+  }
+}
+@-webkit-keyframes slip-dot { 
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes slip-dot { 
+  100% { 
+    transform: rotate(360deg); 
+    -webkit-transform: rotate(360deg); 
+  }
+}
+ 
+@-webkit-keyframes slip-dot-i {
+  0%, 100% { -webkit-transform: scale(0.0); }
+  50% { -webkit-transform: scale(1.0); }
+}
+ 
+@keyframes slip-dot-i {
+  0%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 
+  50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}

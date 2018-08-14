@@ -1,0 +1,48 @@
+.mo-loading-spin-dot {
+  -webkit-animation: spin-dot 2s infinite linear;
+  animation: spin-dot 2s infinite linear;
+  i {
+    position: absolute;
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+    padding: 5px;
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
+    border-radius: 50%;
+    box-sizing: border-box;
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        opacity: $i*0.25;
+        @if $i == 1 {
+          top: 0;
+          left: 0;
+        }@else if $i == 2 {
+          top: 0;
+          right: 0;
+        }@else if $i == 3 {
+          bottom: 0;
+          left: 0;
+        }@else{
+          bottom: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+}
+@-webkit-keyframes spin-dot{
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin-dot{
+  from { 
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    transform: rotate(360deg); 
+    -webkit-transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,51 @@
+.mo-drawer-box {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 99;
+
+
+  .mo-drawer-mask {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  .mo-drawer {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    background-color: #ffffff;
+    box-sizing: border-box;
+
+    .mo-drawer-title {
+      position: relative;
+      height: 30px;
+      padding: 10px 45px 10px 15px;
+      font-size: 22px;
+      line-height: 30px;
+      font-weight: 700px;
+      border-bottom: 1px solid #eeeeee;
+
+      .mo-drawer-close {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        top: 10px;
+        right: 15px;
+        text-align: right;
+        line-height: 30px;
+        cursor: pointer;
+      }
+    }
+    
+    .mo-drawer-content {
+      position: relative;
+      padding:  10px 30px;
+    }
+  }
+}

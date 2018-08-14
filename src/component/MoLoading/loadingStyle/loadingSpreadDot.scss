@@ -1,0 +1,30 @@
+.mo-loading-spread-dot {
+  i {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 100%;
+    -webkit-animation: spread-dot 1.0s infinite ease-in-out;
+    animation: spread-dot 1.0s infinite ease-in-out;
+  }
+}
+@-webkit-keyframes spread-dot {
+  0% { -webkit-transform: scale(0.0); }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+ 
+@keyframes spread-dot {
+  0% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 100% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}

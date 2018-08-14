@@ -1,0 +1,36 @@
+.mo-loading-jump-block {
+  i {
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    top: 0;
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+    -webkit-animation: jump-block 1.2s infinite ease-in-out;
+    animation: jump-block 1.2s infinite ease-in-out;
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}){
+        left: $i*23% - 30.5%;
+        @if $i != 1 {
+          -webkit-animation-delay: $i*0.1s - 1.3s;
+          animation-delay: $i*0.1s - 1.3s;
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes jump-block {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4); } 
+  20% { -webkit-transform: scaleY(1.0); }
+}
+@keyframes jump-block {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  } 
+  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}

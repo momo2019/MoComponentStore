@@ -1,0 +1,33 @@
+.mo-loading-switch-dot {
+  i {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    opacity: 0.6;
+    -webkit-animation: switch-dot 2.0s infinite ease-in-out;
+    animation: switch-dot 2.0s infinite ease-in-out;
+    &:nth-child(2) {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+  }
+}
+
+@-webkit-keyframes switch-dot {
+  0%, 100% { -webkit-transform: scale(0.0); }
+  50% { -webkit-transform: scale(1.0); }
+}
+ 
+@keyframes switch-dot {
+  0%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 
+  50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}

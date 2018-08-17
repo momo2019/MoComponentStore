@@ -17,16 +17,16 @@ export default class MoDrawer extends Component {
       children: <div></div>,          // 内容
     }
     this.obRef = {                    // 给予外部的方法集合
-      open: () => {
-        this._open();
+      show: () => {
+        this._show();
       },
-      close: () => {
-        this._close();
+      hidden: () => {
+        this._hidden();
       },
     }
   }
 
-  _open = () => {
+  _show = () => {
     this.setState({
       showDrawer: true,
     })
@@ -36,7 +36,7 @@ export default class MoDrawer extends Component {
     },0);
   }
  
-  _close = () => {
+  _hidden = () => {
     this.refs.box && (this.refs.box.style.opacity = 0);
     this.refs.drawer && (this.refs.drawer.style[this.plugin.placement] = '-100%');
     setTimeout(() => {
@@ -77,7 +77,7 @@ export default class MoDrawer extends Component {
         return (
           <div 
             className='mo-drawer-close' 
-            onClick={()=>this._close()}
+            onClick={()=>this._hidden()}
           >
           ×
           </div>
@@ -94,7 +94,7 @@ export default class MoDrawer extends Component {
           return (
             <div 
               className='mo-drawer-mask' 
-              onClick={() => this._close()}
+              onClick={() => this._hidden()}
             >
             </div>
           )
@@ -118,6 +118,12 @@ export default class MoDrawer extends Component {
 
   componentWillMount(){
     this._init();
+  }
+
+  componentDidMount(){
+    if(this.refs.box.parentNode !== document.body){       //防止视图层级显示不理想
+      document.body.appendChild(this.refs.box);
+    }
   }
 
   render() {

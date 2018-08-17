@@ -18,7 +18,7 @@ export default class DemoDrawer extends Component {
             Test
           </div>
         </MoDrawer>
-        <button onClick={()=>this.drawerRef.open()}>
+        <button onClick={()=>this.drawerRef.show()}>
           Drawer
         </button>
       </div>

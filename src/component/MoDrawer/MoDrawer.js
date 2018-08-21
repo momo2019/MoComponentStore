@@ -27,6 +27,9 @@ export default class MoDrawer extends Component {
   }
 
   _show = () => {
+    if(this.state.showDrawer === true) {
+      return false;
+    }
     this.setState({
       showDrawer: true,
     })
@@ -37,6 +40,9 @@ export default class MoDrawer extends Component {
   }
  
   _hidden = () => {
+    if(this.state.showDrawer === false) {
+      return false;
+    }
     this.refs.box && (this.refs.box.style.opacity = 0);
     this.refs.drawer && (this.refs.drawer.style[this.plugin.placement] = '-100%');
     setTimeout(() => {

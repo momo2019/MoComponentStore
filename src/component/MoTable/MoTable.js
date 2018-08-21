@@ -15,13 +15,28 @@ export default class MoTable extends Component {
   }
 
   _init = () => {
-    let temp = {
+    this.plugin = {
       columns: this.props.columns || [],
       pagination: this.props.columns || 0,
       scroll: this.props.scroll || 0,
       selection: this.props.selection || false,
     }
-    return temp;
+    this.ths = (() => {
+      return this.plugin.columns.map((item) => 
+                item.sort ? (
+                  <th 
+                    key={ item.key } 
+                    onClick={() => this._sort(item)}
+                  >
+                    {item.title}
+                  </th>
+                ) : ( 
+                  <th key={ item.key }>
+                    {item.title}
+                  </th>
+                )  
+              );
+    })();
   }
 
   _sort = (item) => {
@@ -36,27 +51,13 @@ export default class MoTable extends Component {
   }
 
   componentWillMount(){
-    this.plugin = this._init();
+    this._init();
   }
 
 
 
 
   render() {
-    const ths = this.plugin.columns.map((item) => 
-                item.sort ? (
-                  <th 
-                    key={ item.key } 
-                    onClick={() => this._sort(item)}
-                  >
-                    {item.title}
-                  </th>
-                ) : ( 
-                  <th key={ item.key }>
-                    {item.title}
-                  </th>
-                )  
-              );
     const tds = this.state.dataSource.map((item,i) => {
                 let temp = item;
                 let index = i;
@@ -76,7 +77,7 @@ export default class MoTable extends Component {
       <table>
         <tbody>
           <tr>
-            {ths}
+            {this.ths}
           </tr>
           {tds}
         </tbody>

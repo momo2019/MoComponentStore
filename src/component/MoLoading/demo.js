@@ -11,7 +11,7 @@ export default class DemoLoading extends Component {
           width: '300px',
         }}
       >
-        <MoLoading text='loading' style='spinDot' onRef={(ob)=> this.rr = ob} />
+        <MoLoading text='loading' loadStyle='spinDot' onRef={(ob)=> this.rr = ob} />
         <button onClick={()=>this.rr.show()}>22</button>
       </div>
     )

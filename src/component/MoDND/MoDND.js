@@ -7,14 +7,14 @@ export default class MoDND extends Component {
   constructor(props) {
     super(props);
     this.plugin = {
-      isParent: true,                         // 是否是可拖拽元素的父元素
+      // isParent: true,                         // 是否是可拖拽元素的父元素
       style: {display:'block'},                          // 包裹层的样式
     };
   }
 
   _init = () => {
     let temp = {
-      isParent: this.props.isParent === false ? this.props.isParent : true,
+      // isParent: this.props.isParent === false ? this.props.isParent : true,
       style: this.props.style || {display:'block'},
     };
     return temp;
@@ -81,29 +81,25 @@ export default class MoDND extends Component {
 
   componentDidMount() {
     let tempDom = this.parentDom;
-    // 判断本组件包裹的是li还是ul(代指所有子元素还是包裹的父元素)
-    if( !this.plugin.isParent ) {
-      try {
-        if(tempDom.children.length !== 1) {
-          let err = new Error('isParent is \'false\',but the child of MoDND is not only one');
-          throw err;
-        }
-      } catch (error) {
-        console.log( error )
-        return false;
-      }
-      tempDom = tempDom.children[0];
-    }
+    // // 判断本组件包裹的是li还是ul(代指所有子元素还是包裹的父元素)
+    // if( !this.plugin.isParent ) {
+    //   try {
+    //     if(tempDom.children.length !== 1) {
+    //       let err = new Error('isParent is \'false\',but the child of MoDND is not only one');
+    //       throw err;
+    //     }
+    //   } catch (error) {
+    //     console.log( error )
+    //     return false;
+    //   }
+    //   tempDom = tempDom.children[0];
+    // }
 
     // 给可拖拽元素添加 draggable='true'
     for(let i=tempDom.children.length-1; i>=0; i--) {
       tempDom.children[i].setAttribute('draggable',true);
     }
 
-    // 委托父元素绑定拖拽事件
-    tempDom.addEventListener('dragstart',(ev) => this._handleDragStartEvent(ev));
-    tempDom.addEventListener('dragend',(ev) => this._handleDragEndEvent(ev));
-    tempDom.addEventListener('dragenter',(ev) => this._handleDragEnterEvent(ev));
   }
 
   render() {
@@ -111,6 +107,9 @@ export default class MoDND extends Component {
       <div 
         style={this.plugin.style} 
         ref={(dom) => this.parentDom=dom}
+        onDragStart={(ev)=>this._handleDragStartEvent(ev)}
+        onDragEnd={(ev)=>this._handleDragEndEvent(ev)}
+        onDragEnter={(ev)=>this._handleDragEnterEvent(ev)}
       >
         {this.props.children}
       </div>

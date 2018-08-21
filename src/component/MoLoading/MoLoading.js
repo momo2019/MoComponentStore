@@ -12,7 +12,7 @@ export default class MoLoading extends Component {
       size: 'default',
       text: '',
       color: '#1890ff',
-      style: 'spinDot',
+      loadStyle: 'spinDot',
     }
     this.obRef = {
       show: () => {
@@ -25,12 +25,18 @@ export default class MoLoading extends Component {
   }
 
   _show = () => {
+    if(this.state.showOrHidden === true) {
+      return false;
+    }
     this.setState({
       showOrHidden: true,
     })
   }
 
   _hidden = () => {
+    if(this.state.showOrHidden === false) {
+      return false;
+    }
     this.setState({
       showOrHidden: false,
     })
@@ -60,7 +66,7 @@ export default class MoLoading extends Component {
       size: arrPluginSize.indexOf(this.props.size)!==-1 ? this.props.size : 'default',
       text: this.props.text || '',
       color: this.props.color || '#1890ff',
-      style: arrPluginStyle.indexOf(this.props.style)!==-1 ? this.props.style : 'spinDot',
+      loadStyle: arrPluginStyle.indexOf(this.props.style)!==-1 ? this.props.style : 'spinDot',
     }                                                     
     
     loadingIStyle = {                                                           // 动画颜色初始化
@@ -111,7 +117,7 @@ export default class MoLoading extends Component {
     })();
 
     this.loading = (() => {                                                     // loading动画初始化
-      let styleItem = this.plugin.style;
+      let styleItem = this.plugin.loadStyle;
       let pluginStyle = {
         spinDot: 4,
         jumpBlock: 5,
